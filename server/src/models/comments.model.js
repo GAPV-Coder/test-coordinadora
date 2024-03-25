@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../database/database.js';
-// import Event from './event.model.js';
-// import User from './user.model.js';
+import Event from './event.model.js';
+import User from './user.model.js';
 
 class Comments extends Model {}
 
@@ -16,14 +16,14 @@ Comments.init(
             type: DataTypes.STRING(500),
             allowNull: false,
         },
-        // id_event: {
-        //     type: DataTypes.UUID,
-        //     allowNull: false,
-        // },
-        // id_user: {
-        //     type: DataTypes.UUID,
-        //     allowNull: false,
-        // },
+        id_event: {
+            type: DataTypes.UUID,
+            allowNull: false,
+        },
+        id_user: {
+            type: DataTypes.UUID,
+            allowNull: false,
+        },
     },
     {
         sequelize,
@@ -31,7 +31,7 @@ Comments.init(
     },
 );
 
-// Comments.belongsTo(Event, { foreignKey: 'id_event' });
-// Comments.belongsTo(User, { foreignKey: 'id_user' });
+Comments.belongsTo(Event, { foreignKey: 'id_event' });
+Comments.belongsTo(User, { foreignKey: 'id_user' });
 
 export default Comments;

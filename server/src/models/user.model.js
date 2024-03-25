@@ -1,8 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../database/database.js';
-// import Event from './event.model';
-// import Comments from './comments.model';
-// import Likes from './likes.model';
+// import Event from './event.model.js';
+// import Comments from './comments.model.js';
+// import Likes from './likes.model.js';
 
 class User extends Model {}
 

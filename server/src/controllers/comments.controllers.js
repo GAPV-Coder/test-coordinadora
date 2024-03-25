@@ -6,8 +6,12 @@ import {
 
 export const createCommentController = async (req, res) => {
     try {
-        const { comment } = req.body;
-        const newComment = await createCommentService({ comment });
+        const { comment, id_event, id_user } = req.body;
+        const newComment = await createCommentService({
+            comment,
+            id_event,
+            id_user,
+        });
 
         res.status(201).json({
             message: 'Comment successfully created',

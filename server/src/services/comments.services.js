@@ -3,8 +3,12 @@ import HandlerError from '../utils/handlerError.js';
 
 export const createCommentService = async (commentData) => {
     try {
-        const { comment } = commentData;
-        const newComment = await Comments.create({ comment });
+        const { comment, id_event, id_user } = commentData;
+        const newComment = await Comments.create({
+            comment,
+            id_event,
+            id_user,
+        });
 
         return newComment;
     } catch (error) {

@@ -1,8 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../database/database.js';
-import User from './user.model.js';
-import Comments from './comments.model.js';
-import Likes from './likes.model.js';
+// import User from './user.model.js';
+// import Comments from './comments.model.js';
+// import Likes from './likes.model.js';
 
 const validCategories = [
     'Música',
@@ -82,8 +82,8 @@ Event.init(
     },
 );
 
-Event.belongsTo(User, { foreignKey: 'id_user' });
-Event.hasMany(Comments, { foreignKey: 'id_event' });
-Event.hasMany(Likes, { foreignKey: 'id_event' });
+// Event.belongsTo(User, { foreignKey: 'id_user' });
+// Event.hasMany(Comments, { foreignKey: 'id_event' });
+// Event.hasMany(Likes, { foreignKey: 'id_event' });
 
 export default Event;
