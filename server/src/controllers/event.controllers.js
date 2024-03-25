@@ -5,7 +5,9 @@ import {
     updateEventService,
     deleteEventService,
     likeEventService,
+    createEventByFileService,
 } from '../services/event.services.js';
+import HandlerError from '../utils/handlerError.js';
 
 export const createEventController = async (req, res) => {
     try {
@@ -97,6 +99,27 @@ export const likeEventController = async (req, res) => {
         res.status(201).json({ 
             message: 'Like to successful event',
         data: newLike });
+    } catch (error) {
+        return res
+            .status(error.statusCode || 500)
+            .json({ error: error.message });
+    }
+};
+
+export const createEventByFileController = async (req, res) => {
+    try {
+        if (!req.file) {
+            throw new HandlerError('No file uploaded');
+        }
+
+        const filePath = req.file.path;
+        const newEvent = await createEventByFileService(filePath);
+
+        res.status(201).json({
+            message: 'Event created successfully from file',
+            data: newEvent
+        });
+        
     } catch (error) {
         return res
             .status(error.statusCode || 500)
