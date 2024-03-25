@@ -1,6 +1,8 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 import config from './config.js';
 import sequelize from './database/database.js';
 import routes from './routes/index.js';
@@ -28,6 +30,16 @@ app.use((_req, res, next) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(helmet());
+
+// Limit hourly requests
+const limiter = rateLimit({
+    windowMs: 60 * 60 * 1000,
+    max: 100,
+    message: 'Too many requests from this IP, please try again later.'
+});
+
+app.use(limiter);
 
 // Database connection
 sequelize
