@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database';
+import sequelize from '../database/database.js';
 // import Event from './event.model';
 // import User from './user.model';
 
@@ -16,14 +16,14 @@ Comments.init(
             type: DataTypes.STRING(500),
             allowNull: false,
         },
-        id_event: {
-            type: DataTypes.UUID,
-            allowNull: false,
-        },
-        id_user: {
-            type: DataTypes.UUID,
-            allowNull: false,
-        },
+        // id_event: {
+        //     type: DataTypes.UUID,
+        //     allowNull: false,
+        // },
+        // id_user: {
+        //     type: DataTypes.UUID,
+        //     allowNull: false,
+        // },
     },
     {
         sequelize,
