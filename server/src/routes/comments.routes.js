@@ -9,7 +9,7 @@ import { verifyToken } from '../middlewares/verifyUser.js';
 
 const router = express.Router();
 
-router.post('/create', addEventDataMiddleware, verifyToken, createCommentController);
+router.post('/create/:id_event/:id_user', addEventDataMiddleware, verifyToken, createCommentController);
 
 router.put('/update/:id', verifyToken, updateCommentController);
 

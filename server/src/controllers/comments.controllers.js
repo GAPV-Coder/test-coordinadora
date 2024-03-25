@@ -6,7 +6,8 @@ import {
 
 export const createCommentController = async (req, res) => {
     try {
-        const { comment, id_event, id_user } = req.body;
+        const { comment } = req.body;
+        const { id_event, id_user } = req.params;
         const newComment = await createCommentService({
             comment,
             id_event,
