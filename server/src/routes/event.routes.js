@@ -6,17 +6,18 @@ import {
     getEventByIdController,
     updateEventController,
 } from '../controllers/event.controllers.js';
+import { verifyToken } from '../middlewares/verifyUser.js';
 
 const router = express.Router();
 
-router.post('/create', createEventController);
+router.post('/create', verifyToken, createEventController);
 
-router.get('/', getAllEventsController);
+router.get('/', verifyToken, getAllEventsController);
 
-router.get('/:id', getEventByIdController);
+router.get('/:id', verifyToken, getEventByIdController);
 
-router.put('/update/:id', updateEventController);
+router.put('/update/:id', verifyToken, updateEventController);
 
-router.delete('/delete/:id', deleteEventController);
+router.delete('/delete/:id', verifyToken, deleteEventController);
 
 export default router;

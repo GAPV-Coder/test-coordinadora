@@ -1,15 +1,15 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../database/database.js';
-// import User from './user.model.js';
-// import Comments from './comments.model.js';
-// import Likes from './likes.model.js';
+import User from './user.model.js';
+import Comments from './comments.model.js';
+import Likes from './likes.model.js';
 
 const validCategories = [
     'Música',
     'Deportes',
     'Entretenimiento',
     'Salud',
-    'Relogión',
+    'Religión',
 ];
 
 class Event extends Model {}
@@ -71,10 +71,10 @@ Event.init(
             type: DataTypes.STRING(255),
             allowNull: true,
         },
-        // id_user: {
-        //     type: DataTypes.UUID,
-        //     allowNull: false,
-        // },
+        id_user: {
+            type: DataTypes.UUID,
+            allowNull: false,
+        },
     },
     {
         sequelize,
@@ -82,8 +82,8 @@ Event.init(
     },
 );
 
-// Event.belongsTo(User, { foreignKey: 'id_user' });
-// Event.hasMany(Comments, { foreignKey: 'id_event' });
-// Event.hasMany(Likes, { foreignKey: 'id_event' });
+Event.belongsTo(User, { foreignKey: 'id_user' });
+Event.hasMany(Comments, { foreignKey: 'id_event' });
+Event.hasMany(Likes, { foreignKey: 'id_event' });
 
 export default Event;

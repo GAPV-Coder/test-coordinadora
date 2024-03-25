@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import config from '../config.js';
-import HandlerError from './handlerError.js';
+import HandlerError from '../utils/handlerError.js';
 
 const { jwtSecretKey } = config;
 
@@ -11,12 +11,13 @@ export const verifyToken = (req, res, next) => {
         return next(HandlerError(401, 'Unauthorized'));
     }
 
-    jwt.verify(token, jwtSecretKey, (error, user) => {
+    jwt.verify(token, jwtSecretKey, (error, decodedToken) => {
         if (error) {
             return next(HandlerError(401, 'Unauthorized'));
         }
 
-        req.user = user;
+        req.userData = decodedToken;
+        console.log('req.userData: ->', req.userData);
         next();
     });
 };

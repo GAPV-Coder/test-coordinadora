@@ -49,7 +49,7 @@ export const signInServices = async (email, password) => {
             throw new HandlerError('Invalid credentials', 401);
         }
 
-        const token = jwt.sign({ id: user.user_id }, jwtSecretKey);
+        const token = jwt.sign({ userId: user.user_id }, jwtSecretKey);
 
         return {
             user: {

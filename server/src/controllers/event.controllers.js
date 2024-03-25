@@ -8,8 +8,14 @@ import {
 
 export const createEventController = async (req, res) => {
     try {
+        const userId = req.userData.id;
+        console.log('userId: ', userId)
+        if (!userId) {
+            throw new Error('User ID is missing');
+        }
+
         const eventData = req.body;
-        const newEvent = await createEventService(eventData);
+        const newEvent = await createEventService(eventData, userId);
 
         res.status(201).json({
             message: 'Event created successfully',

@@ -1,9 +1,9 @@
 import Event from '../models/event.model.js';
 import HandlerError from '../utils/handlerError.js';
 
-export const createEventService = async (eventData) => {
+export const createEventService = async (eventData, userId) => {
     try {
-        const newEvent = await Event.create(eventData);
+        const newEvent = await Event.create({ ...eventData, id_user: userId});
         return newEvent;
     } catch (error) {
         throw new HandlerError(
