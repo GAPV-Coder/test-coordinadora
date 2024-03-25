@@ -9,7 +9,7 @@ import {
 
 export const createEventController = async (req, res) => {
     try {
-        const userId = req.userData.id;
+        const userId = req.userData.userId;
         if (!userId) {
             throw new Error('User ID is missing');
         }

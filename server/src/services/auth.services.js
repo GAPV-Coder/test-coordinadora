@@ -39,7 +39,7 @@ export const signUpServices = async (userData) => {
 
 export const signInServices = async (email, password) => {
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({ where: { email } });
         if (!user) {
             throw new HandlerError('Email not found', 404);
         }

@@ -8,16 +8,17 @@ import {
     updateEventController,
 } from '../controllers/event.controllers.js';
 import { verifyToken } from '../middlewares/verifyUser.js';
+import { eventValidations } from '../middlewares/validations.js';
 
 const router = express.Router();
 
-router.post('/create', verifyToken, createEventController);
+router.post('/create', eventValidations, verifyToken, createEventController);
 
 router.get('/', verifyToken, getAllEventsController);
 
 router.get('/:id', verifyToken, getEventByIdController);
 
-router.put('/update/:id', verifyToken, updateEventController);
+router.put('/update/:id', eventValidations, verifyToken, updateEventController);
 
 router.delete('/delete/:id', verifyToken, deleteEventController);
 
