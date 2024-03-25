@@ -4,6 +4,7 @@ import {
     getEventByIdService,
     updateEventService,
     deleteEventService,
+    likeEventService,
 } from '../services/event.services.js';
 
 export const createEventController = async (req, res) => {
@@ -88,6 +89,17 @@ export const deleteEventController = async (req, res) => {
     }
 };
 
-export const likeEventController = async () => {
-    try {} catch (error) {}
+export const likeEventController = async (req, res) => {
+    try {
+        const { id_event, id_user } =req.params;
+        const newLike = await likeEventService(id_event, id_user);
+
+        res.status(201).json({ 
+            message: 'Like to successful event',
+        data: newLike });
+    } catch (error) {
+        return res
+            .status(error.statusCode || 500)
+            .json({ error: error.message });
+    }
 };

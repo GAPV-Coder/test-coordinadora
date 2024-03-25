@@ -4,6 +4,7 @@ import {
     deleteEventController,
     getAllEventsController,
     getEventByIdController,
+    likeEventController,
     updateEventController,
 } from '../controllers/event.controllers.js';
 import { verifyToken } from '../middlewares/verifyUser.js';
@@ -19,5 +20,7 @@ router.get('/:id', verifyToken, getEventByIdController);
 router.put('/update/:id', verifyToken, updateEventController);
 
 router.delete('/delete/:id', verifyToken, deleteEventController);
+
+router.post('/like/:id_event/:id_user', verifyToken, likeEventController);
 
 export default router;

@@ -1,9 +1,10 @@
 import Event from '../models/event.model.js';
+import Likes from '../models/likes.model.js';
 import HandlerError from '../utils/handlerError.js';
 
 export const createEventService = async (eventData, userId) => {
     try {
-        const newEvent = await Event.create({ ...eventData, id_user: userId});
+        const newEvent = await Event.create({ ...eventData, id_user: userId });
         return newEvent;
     } catch (error) {
         throw new HandlerError(
@@ -82,6 +83,15 @@ export const deleteEventService = async (eventId) => {
     }
 };
 
-export const likeEventService = async () => {
-    try {} catch (error) {}
+export const likeEventService = async (eventId, userId) => {
+    try {
+        const like = await Likes.create({ id_event: eventId, id_user: userId });
+        return like;
+    } catch (error) {
+        throw new HandlerError(
+            `Error indicating you like this event: ${error.message}`,
+            500,
+            error,
+        );
+    }
 };
