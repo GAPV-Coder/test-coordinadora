@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/database';
+import sequelize from '../database/database.js';
 // import Event from './event.model';
 // import User from './user.model';
 
@@ -12,14 +12,14 @@ Likes.init(
             defaultValue: DataTypes.UUIDV4,
             primaryKey: true,
         },
-        id_user: {
-            type: DataTypes.UUID,
-            allowNull: false,
-        },
-        id_event: {
-            type: DataTypes.UUID,
-            allowNull: false,
-        },
+        // id_user: {
+        //     type: DataTypes.UUID,
+        //     allowNull: false,
+        // },
+        // id_event: {
+        //     type: DataTypes.UUID,
+        //     allowNull: false,
+        // },
     },
     {
         sequelize,

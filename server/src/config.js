@@ -8,6 +8,8 @@ const config = {
     dbPassword: process.env.DB_PASSWORD,
     dbHost: process.env.DB_HOST || 'localhost',
     dbPort: process.env.DB_PORT,
+    jwtSecretKey: process.env.JWT_SECRET,
+    jwtExpiresIn: process.env.JWT_EXPIRES_TOKEN
 }
 
 export default config;

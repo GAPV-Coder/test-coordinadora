@@ -81,3 +81,7 @@ export const deleteEventService = async (eventId) => {
         );
     }
 };
+
+export const likeEventService = async () => {
+    try {} catch (error) {}
+};

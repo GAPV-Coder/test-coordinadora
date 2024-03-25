@@ -1,6 +1,10 @@
 import User from '../models/user.model.js';
 import HandlerError from '../utils/handlerError.js';
-import { encryptPassword } from '../utils/encryption.js';
+import { comparePassword, encryptPassword } from '../utils/encryption.js';
+import config from '../config.js';
+import jwt from 'jsonwebtoken';
+
+const { jwtSecretKey } = config;
 
 export const signUpServices = async (userData) => {
     try {
@@ -30,5 +34,33 @@ export const signUpServices = async (userData) => {
             500,
             error,
         );
+    }
+};
+
+export const signInServices = async (email, password) => {
+    try {
+        const user = await User.findOne({ email });
+        if (!user) {
+            throw new HandlerError('Email not found', 404);
+        }
+
+        const isMatchPassword = await comparePassword(password, user.password);
+        if (!isMatchPassword) {
+            throw new HandlerError('Invalid credentials', 401);
+        }
+
+        const token = jwt.sign({ id: user.user_id }, jwtSecretKey);
+
+        return {
+            user: {
+                id: user.user_id,
+                name: user.name,
+                last_name: user.last_name,
+                email: user.email,
+            },
+            token,
+        };
+    } catch (error) {
+        throw new HandlerError(`Sign in failed: ${error.message}`, 500, error);
     }
 };

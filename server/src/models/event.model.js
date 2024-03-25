@@ -1,9 +1,8 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../database/database.js';
-import HandlerError from '../utils/handlerError.js';
-// import User from './user.model';
-// import Comments from './comments.model';
-// import Likes from './likes.model';
+// import User from './user.model.js';
+// import Comments from './comments.model.js';
+// import Likes from './likes.model.js';
 
 const validCategories = [
     'Música',

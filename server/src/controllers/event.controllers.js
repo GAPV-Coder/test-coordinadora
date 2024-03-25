@@ -82,3 +82,7 @@ export const deleteEventController = async (req, res) => {
             .json({ error: error.message });
     }
 };
+
+export const likeEventController = async () => {
+    try {} catch (error) {}
+};
