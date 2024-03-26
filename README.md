@@ -20,3 +20,12 @@
 # The documentation of this API can be found in the following link:
 
 https://documenter.getpostman.com/view/27313712/2sA35D53mP
+
+# In the following link you can find the entity-relationship diagram of the database and its respective scripts:
+
+https://dbdiagram.io/d/Event-Management-65fe559bae072629cec1c28b
+
+
+In the following link you will be able to find the video with the sustentation of the project:
+
+https://drive.google.com/file/d/1cVfZRSSi7A1PXGHNML85QnkUyuClcWpp/view?usp=sharing

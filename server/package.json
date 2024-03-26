@@ -7,8 +7,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "test": "jest",
-    "test:controller": "jest tests/controllers"
+    "test": "jest"
   },
   "author": "Gustavo Pereira",
   "license": "ISC",
